@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0d0b1a" />
+    <meta name="description" content="Turn your month into a beautiful shareable story." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Your Month Wrapped</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="welcome" class="welcome-screen screen active">
+        <div class="aurora aurora-one"></div><div class="aurora aurora-two"></div>
+        <div class="welcome-top"><span class="eyebrow">PRIVATE BY DESIGN</span><span class="tiny-logo">YW</span></div>
+        <div class="welcome-copy">
+          <p class="kicker">YOUR MONTH</p>
+          <h1>Wrapped<span class="period">.</span></h1>
+          <p class="lede">30 days. One story.<br />Make it worth posting.</p>
+        </div>
+        <div class="welcome-card" aria-hidden="true"><div class="welcome-shine"></div><span>SEPTEMBER</span><strong>08.7</strong><em>main character<br />energy</em><i>✦</i></div>
+        <div class="welcome-bottom"><p>Made for your camera roll, not a spreadsheet.</p><button class="primary-button" data-go="setup">Start your wrap <span>→</span></button></div>
+      </section>
+
+      <section id="setup" class="screen flow-screen">
+        <header class="topbar"><button class="icon-button back" data-go="welcome" aria-label="Back">←</button><div class="wordmark">YOUR MONTH <b>WRAPPED</b></div><button class="icon-button" id="openHistory" aria-label="Your history">◷</button></header>
+        <div class="progress"><span class="progress-fill" style="width: 9%"></span></div>
+        <div class="step-content intro-step">
+          <p class="eyebrow">LET'S SET THE SCENE</p><h2>Which month are<br /><em>we wrapping?</em></h2>
+          <label class="field-label" for="monthInput">THE MONTH</label><input id="monthInput" class="month-input" type="month" />
+          <p class="privacy-note">✦ Your memories stay on this device.</p>
+        </div>
+        <footer class="sticky-action"><button class="primary-button" data-go="questions">Continue <span>→</span></button></footer>
+      </section>
+
+      <section id="questions" class="screen flow-screen">
+        <header class="topbar"><button class="icon-button back" data-go="setup" aria-label="Back">←</button><div class="wordmark">YOUR MONTH <b>WRAPPED</b></div><span class="question-count" id="questionCount">1 / 8</span></header>
+        <div class="progress"><span id="questionProgress" class="progress-fill"></span></div>
+        <div class="question-layout">
+          <div id="questionArea" class="step-content question-area"></div>
+          <aside class="mini-preview-wrap"><div class="preview-label"><span>LIVE PREVIEW</span><i></i><span>UPDATING</span></div><div id="miniCard" class="share-card theme-midnight mini-card"></div></aside>
+        </div>
+        <footer class="sticky-action question-actions"><button id="skipQuestion" class="text-button">Skip</button><button id="nextQuestion" class="primary-button">Continue <span>→</span></button></footer>
+      </section>
+
+      <section id="result" class="screen result-screen">
+        <header class="topbar result-top"><button class="icon-button back" data-go="questions" aria-label="Back">←</button><div class="wordmark">YOUR MONTH <b>WRAPPED</b></div><button class="icon-button" id="saveMonth" aria-label="Save your month">♡</button></header>
+        <div class="result-content">
+          <div class="result-heading"><p class="eyebrow">YOUR STORY IS READY</p><h2>Okay, this is<br /><em>so postable.</em></h2></div>
+          <div id="finalCard" class="share-card theme-midnight final-card"></div>
+          <div class="theme-section"><div class="section-title"><span>CHOOSE A LOOK</span><small id="themeName">MIDNIGHT</small></div><div id="themePicker" class="theme-picker"></div></div>
+          <div class="format-section"><span class="section-title-text">MAKE IT YOURS</span><div class="format-tabs"><button class="format-tab active" data-format="story">Story <small>9:16</small></button><button class="format-tab" data-format="post">Post <small>4:5</small></button><button class="format-tab" data-format="square">Square <small>1:1</small></button></div></div>
+          <div class="share-grid"><button id="downloadButton" class="primary-button share-main">Download <span>↓</span></button><button id="shareButton" class="share-icon" aria-label="Share">↗</button><button id="copyButton" class="copy-summary">Copy my summary</button></div>
+          <p class="viral-line">Post your month, tag your people, and ask:<br /><b>“what was your month like?”</b></p>
+          <button id="restartButton" class="restart-button">Make another month</button>
+        </div>
+      </section>
+
+      <section id="history" class="screen history-screen">
+        <header class="topbar"><button class="icon-button back" data-go="setup" aria-label="Back">←</button><div class="wordmark">YOUR <b>ARCHIVE</b></div><span></span></header>
+        <div class="history-content"><p class="eyebrow">SAVED LOCALLY</p><h2>Your months,<br /><em>your little era.</em></h2><div id="historyStats" class="history-stats"></div><div id="historyList" class="history-list"></div></div>
+      </section>
+    </main>
+    <div id="toast" class="toast" role="status"></div>
+    <canvas id="exportCanvas" hidden></canvas>
+    <script src="app.js"></script>
+  </body>
+</html>
